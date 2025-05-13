@@ -42,26 +42,27 @@ async def handle_link(client: Client, message: Message):
 
 # Media yuklab olish funksiyasi
 def download_media(url, media_type):
+    ydl_opts = {
+        'outtmpl': 'downloads/%(title).30s.%(ext)s',
+        'noplaylist': True,
+        'quiet': True,
+        'cookies': 'cookies.txt',  # Cookie faylni shu yerga uladik
+    }
+
     if media_type == "audio":
-        ydl_opts = {
+        ydl_opts.update({
             'format': 'bestaudio/best',
-            'outtmpl': 'downloads/%(title).30s.%(ext)s',
-            'noplaylist': True,
-            'quiet': True,
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
                 'preferredcodec': 'mp3',
                 'preferredquality': '192',
-            }],
-        }
+            }]
+        })
     else:
-        ydl_opts = {
+        ydl_opts.update({
             'format': 'bestvideo+bestaudio/best',
-            'outtmpl': 'downloads/%(title).30s.%(ext)s',
-            'noplaylist': True,
-            'quiet': True,
             'merge_output_format': 'mp4',
-        }
+        })
 
     try:
         with YoutubeDL(ydl_opts) as ydl:
