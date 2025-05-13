@@ -10,6 +10,7 @@ load_dotenv()
 API_ID = int(os.getenv("API_ID"))
 API_HASH = os.getenv("API_HASH")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
+COOKIES_PATH = os.getenv("COOKIES_PATH")
 
 app = Client("youtube_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
@@ -46,7 +47,7 @@ def download_media(url, media_type):
         'outtmpl': 'downloads/%(title).30s.%(ext)s',
         'noplaylist': True,
         'quiet': True,
-        'cookies': 'www.youtube.com_cookies.txt',  # Cookie faylni shu yerga uladik
+        # 'cookies': 'youtube.txt',  # Cookie faylni shu yerga uladik
     }
 
     if media_type == "audio":
