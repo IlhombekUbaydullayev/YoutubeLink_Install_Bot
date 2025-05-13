@@ -1,4 +1,4 @@
-pyrogram
-tgcrypto
-python-dotenv
-yt-dlp
+pyrogram==2.0.106
+tgcrypto==1.2.5
+python-dotenv==1.0.1
+yt-dlp==2024.03.10
