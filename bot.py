@@ -46,7 +46,7 @@ def download_media(url, media_type):
         'outtmpl': 'downloads/%(title).30s.%(ext)s',
         'noplaylist': True,
         'quiet': True,
-        'cookies': 'cookies.txt',  # Cookie faylni shu yerga uladik
+        'cookies': 'www.youtube.com_cookies.txt',  # Cookie faylni shu yerga uladik
     }
 
     if media_type == "audio":
